@@ -1,0 +1,38 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: config-client-spring-bus
+# config
+  cloud:
+    config:
+      uri: http://localhost:8888
+      label: master
+      profile: dev
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host: /datahub_vhost
+    username: admin
+    password: admin123
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, bus-refresh
+# eureka server
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+# logging
+logging:
+  file: logs/${spring.application.name}.log
+  file.max-size: 100MB
+  level:
+    root: info
+  pattern:
+    dateformat: yyyy-MM-dd HH:mm:ss.SSS
+    level: '%5p'
