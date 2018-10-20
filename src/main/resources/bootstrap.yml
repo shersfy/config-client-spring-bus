@@ -2,7 +2,7 @@ server:
   port: 8083
 spring:
   application:
-    name: config-client-spring-bus
+    name: spring-cloud-config-bus-demo
 # config
   cloud:
     config:
